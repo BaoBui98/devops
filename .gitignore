@@ -37,3 +37,11 @@ lerna-debug.log*
 /.env
 .env.test
 .env.production
+
+# local env files
+.env
+.env.test
+.env.production
+
+# jenkins data
+jenkins_data/
