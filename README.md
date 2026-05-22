@@ -3,7 +3,10 @@ sudo docker run -d \
   --name devops-app \
   -p 8001:3000 \
   devops-app
+    sudo docker compose down --remove-orphans
   docker compose up -d --build
+
+
 
   <!-- Install docker compose -->
   sudo mkdir -p /root/.docker/cli-plugins/
