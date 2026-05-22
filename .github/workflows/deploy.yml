@@ -19,14 +19,17 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          port: ${{ secrets.SERVER_PORT }} # Thường là 22
+          port: ${{ secrets.SERVER_PORT }}
+
           script: |
-            # Di chuyển vào thư mục dự án trên server
+            # Vào thư mục project
             cd ${{ secrets.SERVER_PROJECT_PATH }}
-            
-            # Kéo code mới nhất từ nhánh main
+
+            # Fix quyền project
+            sudo chown -R ec2-user:ec2-user .
+
+            # Pull code mới
             git pull origin main
-            
-            # Build và chạy lại container với docker-compose
-            docker compose down
-            docker compose up -d --build
+
+            # Restart docker
+            sudo docker compose up -d --build
