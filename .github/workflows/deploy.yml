@@ -31,5 +31,8 @@ jobs:
             # Pull code mới
             git pull origin main
 
+            # Dọn dẹp rác Docker để tránh lỗi đầy ổ cứng
+            sudo docker system prune -f
+
             # Restart docker
             sudo docker compose up -d --build
